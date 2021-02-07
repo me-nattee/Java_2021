@@ -1,7 +1,8 @@
-package ru.autoqa.Java2021.addressbook;
+package ru.autoqa.Java2021.addressbook.tests;
 
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import ru.autoqa.Java2021.addressbook.appmanager.ApplicationManager;
 
 public class TestBase {
 

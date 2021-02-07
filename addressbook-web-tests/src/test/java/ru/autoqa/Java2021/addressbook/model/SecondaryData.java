@@ -1,4 +1,4 @@
-package ru.autoqa.Java2021.addressbook;
+package ru.autoqa.Java2021.addressbook.model;
 
 public class SecondaryData {
     private final String email;
