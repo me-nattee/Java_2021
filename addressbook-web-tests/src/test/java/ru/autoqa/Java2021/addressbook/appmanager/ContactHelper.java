@@ -43,7 +43,7 @@ public class ContactHelper extends BaseHelper {
     }
 
     public void selectContact() {
-        click(By.id("19"));
+        click(By.xpath("(//input[@name='selected[]'])"));
     }
 
     public void deleteContact() {
