@@ -1,7 +1,10 @@
 package ru.autoqa.Java2021.addressbook.appmanager;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 import ru.autoqa.Java2021.addressbook.model.ContactData;
 
 public class ContactHelper extends BaseHelper {
@@ -17,7 +20,7 @@ public class ContactHelper extends BaseHelper {
         click(By.xpath("(//input[@name='submit'])[2]"));
     }
 
-    public void fillBaseInformation(ContactData contactData) {
+    public void fillBaseInformation(ContactData contactData, boolean creation) {
         type(By.name("firstname"), contactData.getFirstname());
         type(By.name("lastname"), contactData.getLastname());
         type(By.name("nickname"), contactData.getNickname());
@@ -33,9 +36,14 @@ public class ContactHelper extends BaseHelper {
 
         type(By.name("byear"), contactData.getByear());
         select(By.name("aday"),contactData.getAday());
-//        click(By.name("new_group"));
-        type(By.name("notes"), contactData.getNotes());
 
+        if (creation){
+            new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+        } else {
+            Assert.assertFalse(isElementPresent(By.name("new_group")));
+        }
+
+        type(By.name("notes"), contactData.getNotes());
     }
 
     public void initContactCreation() {

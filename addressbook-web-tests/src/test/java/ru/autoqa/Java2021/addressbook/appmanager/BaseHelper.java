@@ -2,6 +2,7 @@ package ru.autoqa.Java2021.addressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 
@@ -21,6 +22,7 @@ public class BaseHelper {
         wd.findElement(locator).clear();
         wd.findElement(locator).sendKeys(text);
     }
+
     public boolean isAlertPresent() {
         try {
             wd.switchTo().alert();
@@ -33,5 +35,14 @@ public class BaseHelper {
     protected void select(By locator, String selectedText) {
         click(locator);
         new Select(wd.findElement(locator)).selectByVisibleText(selectedText);
+    }
+
+    protected boolean isElementPresent(By locator) {
+        try {
+            wd.findElement(locator);
+            return true;
+        } catch (NoSuchElementException ex){
+            return false;
+        }
     }
 }
