@@ -12,9 +12,9 @@ public class ContactHelper extends BaseHelper {
     public ContactHelper(WebDriver wd) {
         super(wd);
     }
-    public void returnToHomePage() {
-        click(By.linkText("home"));
-    }
+//    public void returnToHomePage() {
+//        click(By.linkText("home"));
+//    }
 
     public void submitContactCreation() {
         click(By.xpath("(//input[@name='submit'])[2]"));
