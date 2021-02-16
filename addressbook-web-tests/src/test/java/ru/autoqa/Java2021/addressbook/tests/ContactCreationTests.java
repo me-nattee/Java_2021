@@ -7,9 +7,7 @@ public class ContactCreationTests extends TestBase {
 
     @Test
     public void testCreationNewContact() throws Exception {
-        app.getContactHelper().initContactCreation();
-        app.getContactHelper().fillBaseInformation(new ContactData("Rita", "Black", "rita", "Jn", "Petrozavodsk", "335999", "8923294455","dfdfn@gmail.com", "ssstr.ru", "6", "February", "1990", "-", "Test1","hi!"), true);
-        app.getContactHelper().submitContactCreation();
+        app.getContactHelper().createContact(new ContactData("Rita", "Black", "rita", "Jn", "Petrozavodsk", "335999", "8923294455","dfdfn@gmail.com", "ssstr.ru", "6", "February", "1990", "-", "Test1","hi!"));
         app.getNavigationHelper().returnToHomePage();
     }
 
