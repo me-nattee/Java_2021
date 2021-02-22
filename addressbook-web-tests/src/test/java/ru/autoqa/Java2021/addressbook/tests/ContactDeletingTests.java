@@ -1,5 +1,6 @@
 package ru.autoqa.Java2021.addressbook.tests;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.autoqa.Java2021.addressbook.model.ContactData;
 
@@ -14,7 +15,5 @@ public class ContactDeletingTests extends TestBase {
         app.getContactHelper().selectContact();
         app.getContactHelper().deleteContact();
         app.getContactHelper().closeAlert();
-        app.getNavigationHelper().returnToHomePage();
-
     }
 }
