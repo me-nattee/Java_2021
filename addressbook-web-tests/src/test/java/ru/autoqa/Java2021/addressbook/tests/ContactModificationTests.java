@@ -5,6 +5,7 @@ import org.testng.annotations.Test;
 import ru.autoqa.Java2021.addressbook.model.ContactData;
 import ru.autoqa.Java2021.addressbook.model.GroupData;
 
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 
@@ -18,7 +19,7 @@ public class ContactModificationTests extends TestBase {
         app.getNavigationHelper().returnToHomePage();
         List<ContactData> before = app.getContactHelper().getContactList();
         app.getContactHelper().editContact(before.size()-1);
-        ContactData contact = new ContactData(before.get(before.size()-1).getId(),"Mary", "Brown", "nicc", "Jn", "Petrozavodsk", "1111999", "8921194455","dfdfn@gmail.com", "ssstr.ru", "6", "February", "1990", "4", null, "hi!");
+        ContactData contact = new ContactData(before.get(before.size()-1).getId(),"Mary", "Mrown", "nicc", "Jn", "Petrozavodsk", "1111999", "8921194455","dfdfn@gmail.com", "ssstr.ru", "6", "February", "1990", "4", null, "hi!");
         app.getContactHelper().fillBaseInformation(contact, false);
         app.getContactHelper().submitContactModification();
         app.getNavigationHelper().returnToHomePage();
@@ -27,7 +28,10 @@ public class ContactModificationTests extends TestBase {
 
         before.remove(before.size()-1);
         before.add(contact);
-        Assert.assertEquals(new HashSet<Object>(after), new HashSet<Object>(before));
+        Comparator<? super ContactData> byId = (c1, c2) -> Integer.compare(c1.getId(), c2.getId());
+        before.sort(byId);
+        after.sort(byId);
+        Assert.assertEquals(after, before);
 
     }
 }
