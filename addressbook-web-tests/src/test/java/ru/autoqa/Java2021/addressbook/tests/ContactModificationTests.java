@@ -3,7 +3,6 @@ package ru.autoqa.Java2021.addressbook.tests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.autoqa.Java2021.addressbook.model.ContactData;
-
 import java.util.Comparator;
 import java.util.List;
 
