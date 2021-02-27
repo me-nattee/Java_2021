@@ -17,7 +17,8 @@ public class ContactHelper extends BaseHelper {
     public ContactHelper(WebDriver wd) {
         super(wd);
     }
-//    public void returnToHomePage() {
+
+    //    public void returnToHomePage() {
 //        click(By.linkText("home"));
 //    }
 
@@ -70,7 +71,6 @@ public class ContactHelper extends BaseHelper {
 
     public void editContact(int index) {
         wd.findElements(By.xpath("//img[@alt='Edit']")).get(index).click();
-//        click(By.xpath("//img[@alt='Edit']"));
     }
 
     public void submitContactModification() {
@@ -113,8 +113,7 @@ public class ContactHelper extends BaseHelper {
             int id = Integer.parseInt(row.findElement(By.tagName("input")).getAttribute("value"));
             String firstname = cells.get(2).getText();
             String lastname = cells.get(1).getText();
-            ContactData contact = new ContactData(id, firstname, lastname,null, null,null,null,null,null,null,null,null,null,null,null,null);
-            contacts.add(contact);
+            contacts.add(new ContactData().withId(id).withFirstname(firstname).withLastname(lastname));
         }
         return contacts;
 
