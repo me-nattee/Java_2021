@@ -83,6 +83,13 @@ public class ContactHelper extends BaseHelper {
         submitContactCreation();
     }
 
+    public void modifyContact(int index, ContactData contact) {
+        editContact(index);
+        fillBaseInformation(contact, false);
+        submitContactModification();
+        returnToHomePage();
+    }
+
     public boolean isThereAContact() {
         return isElementPresent(By.xpath("(//input[@name='selected[]'])"));
     }
@@ -105,4 +112,11 @@ public class ContactHelper extends BaseHelper {
         return contacts;
 
     }
+    public void returnToHomePage() {
+        if (isElementPresent(By.id("maintable"))) {
+            return;
+        }
+        click(By.linkText("home"));
+    }
+
 }
