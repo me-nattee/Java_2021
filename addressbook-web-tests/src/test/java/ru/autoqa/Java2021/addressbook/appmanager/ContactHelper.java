@@ -10,7 +10,9 @@ import ru.autoqa.Java2021.addressbook.model.ContactData;
 import ru.autoqa.Java2021.addressbook.model.GroupData;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class ContactHelper extends BaseHelper {
 
@@ -18,9 +20,6 @@ public class ContactHelper extends BaseHelper {
         super(wd);
     }
 
-    //    public void returnToHomePage() {
-//        click(By.linkText("home"));
-//    }
 
     public void submitContactCreation() {
         click(By.name("submit"));
@@ -58,7 +57,10 @@ public class ContactHelper extends BaseHelper {
 
     public void selectContact(int index) {
         wd.findElements(By.xpath("(//input[@name='selected[]'])")).get(index).click();
-//        click(By.xpath("(//input[@name='selected[]'])"));
+    }
+
+    public void selectContactById(int id) {
+        wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
     }
 
     public void deleteContact() {
@@ -83,15 +85,26 @@ public class ContactHelper extends BaseHelper {
         submitContactCreation();
     }
 
-    public void modify(int index, ContactData contact) {
-        editContact(index);
+    public void modify(ContactData contact) {
+        editContactById(contact.getId());
         fillBaseInformation(contact, false);
         submitContactModification();
         returnToHomePage();
     }
 
+    public void editContactById(int id) {
+        wd.findElement(By.xpath("//a[@href='edit.php?id='" + id +"']")).click();
+    }
+
     public void delete(int index) {
         selectContact(index);
+        deleteContact();
+        closeAlert();
+        returnToHomePage();
+    }
+
+    public void delete(ContactData contact) {
+        selectContactById(contact.getId());
         deleteContact();
         closeAlert();
         returnToHomePage();
@@ -116,13 +129,27 @@ public class ContactHelper extends BaseHelper {
             contacts.add(new ContactData().withId(id).withFirstname(firstname).withLastname(lastname));
         }
         return contacts;
-
     }
+
+    public Set<ContactData> all() {
+        Set<ContactData> contacts = new HashSet<ContactData>();
+        List<WebElement> rows = wd.findElements(By.cssSelector("tr[name='entry']"));
+        for (WebElement row : rows) {
+            List<WebElement> cells = row.findElements(By.tagName("td"));
+            int id = Integer.parseInt(row.findElement(By.tagName("input")).getAttribute("value"));
+            String firstname = cells.get(2).getText();
+            String lastname = cells.get(1).getText();
+            contacts.add(new ContactData().withId(id).withFirstname(firstname).withLastname(lastname));
+        }
+        return contacts;
+    }
+
     public void returnToHomePage() {
         if (isElementPresent(By.id("maintable"))) {
             return;
         }
         click(By.linkText("home"));
     }
+
 
 }
