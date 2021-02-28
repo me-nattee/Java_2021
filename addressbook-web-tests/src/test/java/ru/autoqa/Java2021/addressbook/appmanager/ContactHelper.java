@@ -93,7 +93,7 @@ public class ContactHelper extends BaseHelper {
     }
 
     public void editContactById(int id) {
-        wd.findElement(By.xpath("//a[@href='edit.php?id='" + id +"']")).click();
+        wd.findElement(By.xpath("//a[@href='edit.php?id=" + id +"']")).click();
     }
 
     public void delete(int index) {
