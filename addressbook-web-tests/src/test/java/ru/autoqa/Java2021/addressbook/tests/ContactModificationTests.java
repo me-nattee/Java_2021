@@ -1,12 +1,13 @@
 package ru.autoqa.Java2021.addressbook.tests;
 
-import org.testng.Assert;
+
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.autoqa.Java2021.addressbook.model.ContactData;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Set;
+import ru.autoqa.Java2021.addressbook.model.Contacts;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.testng.Assert.assertEquals;
 
 public class ContactModificationTests extends TestBase {
 
@@ -20,16 +21,14 @@ public class ContactModificationTests extends TestBase {
     @Test
     public void testContactModification() {
         app.goTo().homePage();
-        Set<ContactData> before = app.contact().all();
+        Contacts before = app.contact().all();
         ContactData modifiedContact = before.iterator().next();
         ContactData contact = new ContactData().withId(modifiedContact.getId()).withFirstname("Mary!").withLastname("Brown").withNickname("mar").withTitle("Jn").withAddress("Petrozavodsk").withHomenumber("335999").withMobile("8923294455").withEmail("dfdfn@gmail.com").withHomepage("ssstr.ru").withBday("6").withBmonth("February").withByear("1990").withAday("-").withGroup("Test1").withNotes("hi!");
         app.contact().modify(contact);
-        Set<ContactData> after = app.contact().all();
-        Assert.assertEquals(after.size(), before.size());
+        Contacts after = app.contact().all();
+        assertEquals(after.size(), before.size());
 
-        before.remove(modifiedContact);
-        before.add(contact);
-        Assert.assertEquals(after, before);
+        assertThat(after, equalTo(before.without(modifiedContact).withAdded(contact)));
 
     }
 
