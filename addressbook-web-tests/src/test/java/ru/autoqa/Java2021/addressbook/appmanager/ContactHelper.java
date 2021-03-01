@@ -145,7 +145,9 @@ public class ContactHelper extends BaseHelper {
             int id = Integer.parseInt(row.findElement(By.tagName("input")).getAttribute("value"));
             String firstname = cells.get(2).getText();
             String lastname = cells.get(1).getText();
-            contactCache.add(new ContactData().withId(id).withFirstname(firstname).withLastname(lastname));
+            String[] phones = cells.get(5).getText().split("\n");
+            contactCache.add(new ContactData().withId(id).withFirstname(firstname).withLastname(lastname)
+                    .withHomenumber(phones[0]).withMobile(phones[1]));
         }
         return new Contacts(contactCache);
     }
