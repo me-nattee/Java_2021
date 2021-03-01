@@ -12,6 +12,7 @@ public class ContactData {
     private String homenumber;
     private String mobile;
     private String email;
+    private String email2;
     private String homepage;
     private String bday;
     private String bmonth;
@@ -45,6 +46,10 @@ public class ContactData {
     public String getEmail() {
         return email;
     }
+    public String getEmail2() {
+        return email2;
+    }
+
     public String getHomepage() {
         return homepage;
     }
@@ -114,6 +119,11 @@ public class ContactData {
 
     public ContactData withEmail(String email) {
         this.email = email;
+        return this;
+    }
+
+    public ContactData withEmail2(String email) {
+        this.email2 = email2;
         return this;
     }
 
