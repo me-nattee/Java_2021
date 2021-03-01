@@ -158,4 +158,14 @@ public class ContactHelper extends BaseHelper {
     }
 
 
+    public ContactData infoFromEditForm(ContactData contact) {
+        editContactById(contact.getId());
+        String firstname = wd.findElement(By.name("firstname")).getAttribute("value");
+        String lastname = wd.findElement(By.name("lastname")).getAttribute("value");
+        String home = wd.findElement(By.name("home")).getAttribute("value");
+        String mobile = wd.findElement(By.name("mobile")).getAttribute("value");
+        wd.navigate().back();
+        return new ContactData().withId(contact.getId()).withFirstname(contact.getFirstname()).withLastname(contact.getLastname())
+                .withHomenumber(contact.getHomenumber()).withMobile(contact.getMobile());
+    }
 }
