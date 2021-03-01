@@ -142,13 +142,13 @@ public class ContactHelper extends BaseHelper {
         for (WebElement row : rows) {
             List<WebElement> cells = row.findElements(By.tagName("td"));
             int id = Integer.parseInt(row.findElement(By.tagName("input")).getAttribute("value"));
-            String firstname = cells.get(2).getText();
             String lastname = cells.get(1).getText();
+            String firstname = cells.get(2).getText();
             String address = cells.get(3).getText();
-            String[] phones = cells.get(5).getText().split("\n");
+            String allPhones = cells.get(5).getText();
 //            String[] emails = cells.get(4).getText().split("\n");
             contactCache.add(new ContactData().withId(id).withFirstname(firstname).withLastname(lastname)
-                    .withAddress(address).withHomenumber(phones[0]).withMobile(phones[1])); //.withEmail(emails[0]).withEmail2(emails[1]))
+                    .withAddress(address).withAllPhones(allPhones)); //.withEmail(emails[0]).withEmail2(emails[1]))
         }
         return new Contacts(contactCache);
     }
