@@ -21,15 +21,27 @@ public class ContactData {
     private String notes;
     private String group;
     private String allPhones;
+    private String allEmails;
+
+    public String getAllEmails() {
+        return allEmails;
+    }
+
+
+    public String getAllPhones() {
+        return allPhones;
+    }
 
     public ContactData withAllPhones(String allPhones) {
         this.allPhones = allPhones;
         return this;
     }
 
-    public String getAllPhones() {
-        return allPhones;
+    public ContactData withAllEmails(String allEmails) {
+        this.allEmails = allEmails;
+        return this;
     }
+
 
     public String getFirstname() {
         return firstname;
