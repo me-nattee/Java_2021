@@ -19,7 +19,7 @@ public class ContactPhoneTests extends TestBase{
 
 
     private String mergePhones(ContactData contact) {
-        return Arrays.asList(contact.getHomenumber(), contact.getMobile()).stream().filter((s) -> ! s.equals(""))
+        return Arrays.asList(contact.getHomenumber(), contact.getMobile()).stream().filter((s) -> (s) != null).filter((s) -> !(s).equals(""))
                 .map(ContactPhoneTests::cleaned).collect(Collectors.joining("\n"));
 
     }
