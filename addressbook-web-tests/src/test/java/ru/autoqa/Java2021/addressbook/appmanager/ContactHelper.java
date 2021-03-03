@@ -31,6 +31,8 @@ public class ContactHelper extends BaseHelper {
         type(By.name("home"), contactData.getHomenumber());
         type(By.name("mobile"), contactData.getMobile());
         type(By.name("email"), contactData.getEmail());
+        type(By.name("email2"), contactData.getEmail2());
+        type(By.name("email3"), contactData.getEmail3());
         type(By.name("homepage"), contactData.getHomepage());
 
         select(By.name("bday"),contactData.getBday());
@@ -170,8 +172,9 @@ public class ContactHelper extends BaseHelper {
         String address = wd.findElement(By.name("address")).getAttribute("value");
         String email = wd.findElement(By.name("email")).getAttribute("value");
         String email2 = wd.findElement(By.name("email2")).getAttribute("value");
+        String email3 = wd.findElement(By.name("email3")).getAttribute("value");
         wd.navigate().back();
         return new ContactData().withId(contact.getId()).withFirstname(firstname).withLastname(lastname).withAddress(address)
-                .withHomenumber(home).withMobile(mobile).withEmail(email).withEmail2(email2);
+                .withHomenumber(home).withMobile(mobile).withEmail(email).withEmail2(email2).withEmail3(email3);
     }
 }
