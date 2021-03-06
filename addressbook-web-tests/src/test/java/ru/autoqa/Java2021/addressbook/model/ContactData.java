@@ -1,5 +1,6 @@
 package ru.autoqa.Java2021.addressbook.model;
 
+import java.io.File;
 import java.util.Objects;
 
 public class ContactData {
@@ -21,8 +22,19 @@ public class ContactData {
     private String aday;
     private String notes;
     private String group;
+
+    public File getPhoto() {
+        return photo;
+    }
+
+    public ContactData withPhoto(File photo) {
+        this.photo = photo;
+        return this;
+    }
+
     private String allPhones;
     private String allEmails;
+    private File photo;
 
     public String getAllEmails() {
         return allEmails;
