@@ -46,8 +46,10 @@ public class BaseHelper {
     }
 
     protected void select(By locator, String selectedText){
-        click(locator);
-        new Select(wd.findElement(locator)).selectByVisibleText(selectedText);
+        if (selectedText != null) {
+            click(locator);
+            new Select(wd.findElement(locator)).selectByVisibleText(selectedText);
+        }
     }
 
     protected boolean isElementPresent(By locator) {
