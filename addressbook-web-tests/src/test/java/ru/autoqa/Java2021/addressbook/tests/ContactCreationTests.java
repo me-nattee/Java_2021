@@ -1,11 +1,16 @@
 package ru.autoqa.Java2021.addressbook.tests;
 
 import org.hamcrest.MatcherAssert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import ru.autoqa.Java2021.addressbook.model.ContactData;
 import ru.autoqa.Java2021.addressbook.model.Contacts;
+import ru.autoqa.Java2021.addressbook.model.GroupData;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -13,12 +18,21 @@ import static org.hamcrest.CoreMatchers.equalTo;
 
 public class ContactCreationTests extends TestBase {
 
-    @Test
-    public void testCreationNewContact() throws Exception {
+    @DataProvider
+    public Iterator<Object[]> validContacts() {
+        List<Object[]> list = new ArrayList<Object[]>();
+        File photo = new File("src/test/resources/stru.jpg");
+        list.add(new Object[]{new ContactData().withFirstname("Mary").withLastname("Brown").withNickname("mary").withPhoto(photo).withTitle("Jn").withAddress("Moscow, Green st. 15-87").withHomenumber("335999").withMobile("8923294455").withEmail("dfdfn@gmail.com").withEmail2("new_second@mail.com").withEmail3("new_3@mail.com").withHomepage("ssstr.ru").withBday("6").withBmonth("February").withByear("1990").withAday("-").withGroup("Test1").withNotes("hi!")});
+        list.add(new Object[]{new ContactData().withFirstname("Kate").withLastname("Green").withNickname("kate").withPhoto(photo).withTitle("Jn").withAddress("Moscow, Green st. 15-87").withHomenumber("335999").withMobile("8923294455").withEmail("dfdfn@gmail.com").withEmail2("new_second@mail.com").withEmail3("new_3@mail.com").withHomepage("ssstr.ru").withBday("6").withBmonth("February").withByear("1990").withAday("-").withGroup("Test1").withNotes("hi!")});
+        list.add(new Object[]{new ContactData().withFirstname("Bob").withLastname("Black").withNickname("bob").withPhoto(photo).withTitle("Jn").withAddress("Moscow, Green st. 15-87").withHomenumber("335999").withMobile("8923294455").withEmail("dfdfn@gmail.com").withEmail2("new_second@mail.com").withEmail3("new_3@mail.com").withHomepage("ssstr.ru").withBday("6").withBmonth("February").withByear("1990").withAday("-").withGroup("Test1").withNotes("hi!")});
+        return list.iterator();
+    }
+
+    @Test (dataProvider = "validContacts")
+    public void testCreationNewContact(ContactData contact) throws Exception {
         app.goTo().homePage();
         Contacts before = app.contact().all();
         File photo = new File("src/test/resources/stru.jpg");
-        ContactData contact = new ContactData().withFirstname("Mary").withLastname("Brown").withNickname("mar").withPhoto(photo).withTitle("Jn").withAddress("Moscow, Green st. 15-87").withHomenumber("335999").withMobile("8923294455").withEmail("dfdfn@gmail.com").withEmail2("new_second@mail.com").withEmail3("new_3@mail.com").withHomepage("ssstr.ru").withBday("6").withBmonth("February").withByear("1990").withAday("-").withGroup("Test1").withNotes("hi!");
         app.contact().create(contact);
         app.goTo().homePage();
         MatcherAssert.assertThat(app.contact().count(), equalTo(before.size() + 1));
