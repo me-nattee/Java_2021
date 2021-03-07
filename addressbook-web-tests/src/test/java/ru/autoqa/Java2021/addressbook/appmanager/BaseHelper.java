@@ -45,7 +45,7 @@ public class BaseHelper {
         }
     }
 
-    protected void select(By locator, String selectedText) {
+    protected void select(By locator, String selectedText){
         click(locator);
         new Select(wd.findElement(locator)).selectByVisibleText(selectedText);
     }

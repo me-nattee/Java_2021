@@ -29,7 +29,10 @@ public class ContactCreationTests extends TestBase {
         String line = reader.readLine();
         while (line != null){
             String[] split = line.split(";");
-            list.add(new Object[] {new ContactData().withFirstname(split[0]).withLastname(split[1]).withAddress(split[2])});
+            if (split.length !=3){
+                continue;
+            }
+            list.add(new Object[] {new ContactData().withLastname(split[0]).withFirstname(split[1]).withAddress(split[2])});
             line = reader.readLine();
         }
         return list.iterator();
