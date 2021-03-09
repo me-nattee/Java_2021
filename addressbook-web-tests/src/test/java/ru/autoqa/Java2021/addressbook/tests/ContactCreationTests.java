@@ -6,13 +6,11 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import ru.autoqa.Java2021.addressbook.model.ContactData;
 import ru.autoqa.Java2021.addressbook.model.Contacts;
-import ru.autoqa.Java2021.addressbook.model.GroupData;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
