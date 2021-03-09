@@ -17,6 +17,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="/addressbook-web-tests/src/test/java/ru/autoqa/Java2021/addressbook/tests/ContactCreationTests.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="/addressbook-web-tests/src/test/java/ru/autoqa/Java2021/addressbook/tests/GroupCreationTests.java">
           <value>
             <Attribute>
