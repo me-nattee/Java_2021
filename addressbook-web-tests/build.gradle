@@ -12,6 +12,12 @@ dependencies {
     implementation 'com.thoughtworks.xstream:xstream:1.4.15'
 }
 
-test {
+task testGroups (type: Test) {
     useTestNG()
+    suits 'src/test/resources/testing-groups.xml'
+}
+
+task testContacts(type: Test) {
+    useTestNG()
+    suits 'src/test/resources/testing-contacts.xml'
 }
