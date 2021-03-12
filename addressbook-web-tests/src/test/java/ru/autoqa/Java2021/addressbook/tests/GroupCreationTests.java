@@ -3,6 +3,7 @@ package ru.autoqa.Java2021.addressbook.tests;
 import com.thoughtworks.xstream.XStream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import java.util.ArrayList;
 import org.testng.annotations.*;
 import ru.autoqa.Java2021.addressbook.model.GroupData;
 import ru.autoqa.Java2021.addressbook.model.Groups;
