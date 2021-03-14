@@ -10,6 +10,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="/src/test/java/ru/autoqa/Java2021/addressbook/appmanager/DbHelper.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="/src/test/java/ru/autoqa/Java2021/addressbook/tests/ContactCreationTests.java">
           <value>
             <Attribute>
@@ -25,6 +32,20 @@
           </value>
         </entry>
         <entry key="/src/test/java/ru/autoqa/Java2021/addressbook/tests/DbConnectionTest2.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/src/test/java/ru/autoqa/Java2021/addressbook/tests/GroupCreationTests.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/src/test/java/ru/autoqa/Java2021/addressbook/tests/GroupDeletionTests.java">
           <value>
             <Attribute>
               <option name="separator" value=";" />
