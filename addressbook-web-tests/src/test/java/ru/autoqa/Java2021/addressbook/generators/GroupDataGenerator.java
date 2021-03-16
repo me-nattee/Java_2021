@@ -20,6 +20,7 @@ public class GroupDataGenerator {
 
     @Parameter(names = "-d", description = "Data format")
     public String format;
+    //-c 4 -f src/test/resources/groups.csv -d xml
 
     public static void main(String[] args) throws IOException {
         GroupDataGenerator generator = new GroupDataGenerator();

@@ -24,6 +24,7 @@ public class ContactDataGenerator {
 
     @Parameter(names = "-d", description = "Data format")
     public String format;
+    //-c 4 -f src/test/resources/contacts.csv -d xml
 
     public static void main(String[] args) throws IOException {
         ContactDataGenerator generator = new ContactDataGenerator();
