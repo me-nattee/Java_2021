@@ -36,16 +36,16 @@ public class ContactHelper extends BaseHelper {
         type(By.name("email3"), contactData.getEmail3());
         type(By.name("homepage"), contactData.getHomepage());
 
-        select(By.name("bday"),contactData.getBday());
-        select(By.name("bmonth"),contactData.getBmonth());
+        select(By.name("bday"), contactData.getBday());
+        select(By.name("bmonth"), contactData.getBmonth());
 
         type(By.name("byear"), contactData.getByear());
-        select(By.name("aday"),contactData.getAday());
+        select(By.name("aday"), contactData.getAday());
 
-        if (creation){
-            if (contactData.getGroup() != null) {
-                new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
-            }
+        if (creation) {
+//            if (contactData.getGroup() != null) {
+//                new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+//            }
         } else {
             Assert.assertFalse(isElementPresent(By.name("new_group")));
         }
