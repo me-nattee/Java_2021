@@ -70,7 +70,10 @@ public class ContactDataGenerator {
     private List<ContactData> generateContacts(int count) {
         List<ContactData> contacts = new ArrayList<ContactData>();
         for (int i = 0; i < count; i++) {
-            contacts.add(new ContactData().withLastname(String.format("lastname %s", i)).withFirstname(String.format("firstname %s", i)).withAddress(String.format("address %s", i)));
+            contacts.add(new ContactData()
+                    .withLastname(String.format("lastname %s", i))
+                    .withFirstname(String.format("firstname %s", i))
+                    .withAddress(String.format("address %s", i)));
         }
         return contacts;
     }
